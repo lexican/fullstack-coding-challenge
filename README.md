@@ -5,18 +5,18 @@ Demo Website
 
 Run Locally
 1. Clone repo
-$ git clone https://github.com/lexican/fullstack-coding-challenge.git
-$ cd fullstack-coding-challenge
+    $ git clone https://github.com/lexican/fullstack-coding-challenge.git <br>
+    $ cd fullstack-coding-challenge
 
-2. Install MongoDB
-Download it from here: https://docs.mongodb.com/manual/administration/install-community/
+2. Install MongoDB<br>
+    Download it from here: https://docs.mongodb.com/manual/administration/install-community/
 
-3. Run Backend
-$ npm install
-$ npm start
+3. Run Backend<br>
+    $ npm install<br>
+    $ npm start<br>
 
-4. Run Frontend
-# open new terminal
-$ cd client
-$ npm install
-$ npm start
+4. Run Frontend<br>
+    open new terminal<br>
+    $ cd client<br>
+    $ npm install<br>
+    $ npm start
