@@ -12,6 +12,9 @@ Run Locally
     Download it from here: https://docs.mongodb.com/manual/administration/install-community/
 
 3. Run Backend<br>
+    create a .env file in the the root directory<br>
+    add your mongo db url below<br>
+    MONGO_URI = <br>
     $ npm install<br>
     $ npm start<br>
 
