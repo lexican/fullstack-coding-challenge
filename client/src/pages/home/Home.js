@@ -51,7 +51,7 @@ export default function Home() {
         break;
       }
       case "warning":{
-        toast.success(message, {
+        toast.warning(message, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
