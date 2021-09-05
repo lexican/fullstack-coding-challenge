@@ -17,6 +17,7 @@ const deviceSchema = Yup.object().shape({
   lastCheckedOutBy: Yup.string().required("Required"),
 });
 
+
 export default function Home() {
   const [devices, setDevices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,47 @@ export default function Home() {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  const toastMessage = (message, type) =>{
+    switch(type){
+      case "success":{
+        toast.success(message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        break;
+      }
+      case "warning":{
+        toast.success(message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        break;
+      }
+      default: {
+        toast.info(message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    }
+
+  }
 
   //Fetch all the devices from the database
   const loadDevices = () => {
@@ -62,15 +104,7 @@ export default function Home() {
     axios
       .delete("/api/device/" + id)
       .then((response) => {
-        toast.success("Device successfully deleted", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toastMessage("Device successfully deleted", "success")
         loadDevices();
       })
 
@@ -105,15 +139,7 @@ export default function Home() {
         })
         .then((response) => {
           // Success 🎉
-          toast.success("Device updated successfully", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          toastMessage("Device updated successfully", "success")
         })
         .catch((error) => {
           if (error.response) {
@@ -122,30 +148,14 @@ export default function Home() {
           console.log(error.config);
         });
     } else {
-        toast.warning("Checkouts can only be performed between 9:00am - 17:00pm", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          toastMessage("Checkouts can only be performed between 9:00am - 17:00pm", "warning")
     }
   };
 
   //Create new device
   const handleAddNewDevice = () => {
     if (devices.length > 9) {
-      toast.warning("Maximum number of devices allowed is 10", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toastMessage("Maximum number of devices allowed is 10", "warning")
     } else {
       openModal();
     }
@@ -232,15 +242,7 @@ export default function Home() {
                   .post("/api/device/", data)
                   .then((response) => {
                     // Success 🎉
-                    toast.success("Device created successfully", {
-                      position: "top-right",
-                      autoClose: 5000,
-                      hideProgressBar: false,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                    });
+                    toastMessage("Device created successfully", "success")
                     resetForm();
                     closeModal();
                     loadDevices();
@@ -256,15 +258,7 @@ export default function Home() {
                   .put("/api/device/" + device._id, data)
                   .then((response) => {
                     // Success 🎉
-                    toast.success("Device updated successfully", {
-                      position: "top-right",
-                      autoClose: 5000,
-                      hideProgressBar: false,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                    });
+                    toastMessage("Device updated successfully", "success")
                     resetForm();
                     closeModal();
                     loadDevices();
