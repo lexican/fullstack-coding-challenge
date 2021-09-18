@@ -1,4 +1,4 @@
-# Johnson && Johnson Full Stack Coding Challenge
+# Johnson & Johnson Full Stack Coding Challenge
 
 Demo Website
 👉 Demo : https://fullstackcodingchallenge.herokuapp.com/
